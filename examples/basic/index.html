@@ -5,6 +5,7 @@
     <title>A-Frame A-Frame Maze Component Component - Basic</title>
     <meta name="description" content="Basic example for A-Frame Maze Component."></meta>
     <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="../../dist/aframe-maze-component.min.js"></script>
   </head>
   <body>
@@ -13,13 +14,15 @@
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       </a-assets>
-      <a-entity id="camera" wasd-controls="acceleration:1360" camera="userHeight: 1.6" position="-220 40 100" look-controls></a-entity>
-      <a-entity aframe-maze="" scale="1" ></a-entity>
+      <a-entity far="100000" id="camera" wasd-controls="acceleration:1360" camera="userHeight: 1.6" position="0 40 0" look-controls></a-entity>
 
-      <a-plane src="#groundTexture" rotation="-90 0 0" position="-87,41.6,-587" height="100" width="100"></a-plane>
-      <a-light type="ambient" color="#445451" position="-87,41.6,-587"></a-light>
+
+      <a-plane src="#groundTexture"  scale="30 30 30" rotation="-90 0 0" position="0 40 0" height="100" width="100"></a-plane>
+      <a-light type="ambient" color="#445451" position="0 20 0"></a-light>
       <a-light type="point" intensity="2" position="2 4 4" ></a-light>
-      <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048" position="-87,41.6,-587"></a-sky>
+      <a-entity id="sky" scale="10 10 10" position="0 0 -500" environment="preset: starry"></a-entity>
+        <a-entity aframe-maze="" scale="1" ></a-entity>
+
     </a-scene>
 
     <!-- GitHub Corner. -->

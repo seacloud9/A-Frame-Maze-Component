@@ -72,6 +72,8 @@
 	    healthcube:{ default: 5},
 	    mapW:{ default: 10 },
 	    mapH:{ default: 10 },
+	    offsetX: { default: -220 },
+	    offsetZ: { default: -100 },
 	    UNITSIZE: { default: 250 },
 	      WALLHEIGHT:{
 	        default:250 / 3
@@ -106,16 +108,16 @@
 	      var materials = [
 	          new THREE.MeshLambertMaterial({/*color: 0x00CCAA,*/map: THREE.ImageUtils.loadTexture('images/wall-1.jpg')}),
 	          new THREE.MeshLambertMaterial({/*color: 0xC5EDA0,*/map: THREE.ImageUtils.loadTexture('images/wall-2.jpg')}),
-	          new THREE.MeshLambertMaterial({color: 0xFBEBCD}),
+	          new THREE.MeshLambertMaterial({color: 0xFBEBCD, opacity: 0.2}),
 	      ];
 	      console.log(this.data)
 	      for (var i = 0; i < this.data.mapW; i++) {
 	          for (var j = 0, m = this.data.map[i].length; j < m; j++) {
 	              if (this.data.map[i][j]) {
 	                  var wall = new THREE.Mesh(cube, materials[this.data.map[i][j]-1]);
-	                  wall.position.x = (i - units/2) * this.data.UNITSIZE;
+	                  wall.position.x = ((i - units/2) * this.data.UNITSIZE + this.data.offsetX);
 	                  wall.position.y = this.data.WALLHEIGHT/2;
-	                  wall.position.z = (j - units/2) * this.data.UNITSIZE;
+	                  wall.position.z = ((j - units/2) * this.data.UNITSIZE +  this.data.offsetZ);
 	                  console.log(wall)
 	                  this.data.scene.add(wall);
 	              }
@@ -133,10 +135,11 @@
 	      // Lighting
 	      var directionalLight1 = new THREE.DirectionalLight( 0xF7EFBE, 0.7 );
 	      directionalLight1.position.set( 0.5, 1, 0.5 );
-	      this.data.scene.add( directionalLight1 );
+	      //this.data.scene.add( directionalLight1 );
 	      var directionalLight2 = new THREE.DirectionalLight( 0xF7EFBE, 0.5 );
 	      directionalLight2.position.set( -0.5, -1, -0.5 );
 	      this.data.scene.add( directionalLight2 );
+
 	  },
 
 	  /**

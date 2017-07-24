@@ -11,7 +11,15 @@ For [A-Frame](https://aframe.io).
 
 | Property | Description | Default Value |
 | -------- | ----------- | ------------- |
-|          |             |               |
+|**Map**   | Multi-Dimensional Flad 2d Array for creating dungeon |      [ [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,],  [1, 1, 0, 0, 0, 0, 0, 1, 1, 1,], [1, 1, 0, 0, 2, 0, 0, 0, 0, 1,], [1, 0, 0, 0, 0, 2, 0, 0, 0, 1,], [1, 0, 0, 2, 0, 0, 2, 0, 0, 1,], [1, 0, 0, 0, 2, 0, 0, 0, 1, 1,], [1, 1, 1, 0, 0, 0, 0, 1, 1, 1,], [1, 1, 1, 0, 0, 1, 0, 0, 1, 1,],[1, 1, 1, 1, 1, 1, 0, 0, 1, 1,], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,], 
+| **MapW** | width of the map array | 10 |
+| **MapH** | height of the map array | 10 |
+| **offsetX** | offset of maze x | -200 |
+| **offsetZ** | offset of maze z | -100 |
+| **healthcube** | health cubes in maze | 5 |
+| **UNITSIZE** | UNITSIZE in maze | 250 |
+| **WALLHEIGHT** | WALLHEIGHT in maze | 250 / 3 |
+
 
 ### Installation
 
