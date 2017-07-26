@@ -18,7 +18,19 @@ AFRAME.registerComponent('aframe-maze', {
     offsetX: {default: -220},
     offsetZ: {default: -100},
     UNITSIZE: {default: 250},
-    WALLHEIGHT: {default: 250 / 3}
+    WALLHEIGHT: {default: 250 / 3},
+    floorMaterial:{
+      default:new THREE.MeshLambertMaterial({color: 0xEDCBA0 /* map: t.ImageUtils.loadTexture('images/floor-1.jpg')*/})
+    },
+    wallMaterial:{
+      default:[
+        new THREE.MeshLambertMaterial({/* color: 0x00CCAA,*/map: THREE.ImageUtils.loadTexture('images/wall-1.jpg')}),
+        new THREE.MeshLambertMaterial({/* color: 0xC5EDA0,*/map: THREE.ImageUtils.loadTexture('images/wall-2.jpg')}),
+        new THREE.MeshLambertMaterial({color: 0xFBEBCD, opacity: 0.2})
+    ]} ,
+    healthCubeMaterial:{
+      default:new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('images/health.png')})
+    }
   },
 
   /**
@@ -38,18 +50,13 @@ AFRAME.registerComponent('aframe-maze', {
       // Geometry: floor
     var floor = new THREE.Mesh(
           new THREE.CubeGeometry(units * this.data.UNITSIZE, 10, units * this.data.UNITSIZE),
-          new THREE.MeshLambertMaterial({color: 0xEDCBA0 /* map: t.ImageUtils.loadTexture('images/floor-1.jpg')*/})
+          this.data.floorMaterial
       );
     this.data.scene.add(floor);
 
       // Geometry: walls
     var cube = new THREE.CubeGeometry(this.data.UNITSIZE, this.data.WALLHEIGHT, this.data.UNITSIZE);
-    var materials = [
-      new THREE.MeshLambertMaterial({/* color: 0x00CCAA,*/map: THREE.ImageUtils.loadTexture('images/wall-1.jpg')}),
-      new THREE.MeshLambertMaterial({/* color: 0xC5EDA0,*/map: THREE.ImageUtils.loadTexture('images/wall-2.jpg')}),
-      new THREE.MeshLambertMaterial({color: 0xFBEBCD, opacity: 0.2})
-    ];
-    console.log(this.data);
+    var materials = this.data.wallMaterial
     for (var i = 0; i < this.data.mapW; i++) {
       for (var j = 0, m = this.data.map[i].length; j < m; j++) {
         if (this.data.map[i][j]) {
@@ -66,7 +73,7 @@ AFRAME.registerComponent('aframe-maze', {
       // Health cube
     this.data.healthcube = new THREE.Mesh(
           new THREE.CubeGeometry(30, 30, 30),
-          new THREE.MeshBasicMaterial({map: THREE.ImageUtils.loadTexture('images/health.png')})
+          this.data.healthCubeMaterial
       );
     this.data.healthcube.position.set(-this.data.UNITSIZE - 15, 35, -this.data.UNITSIZE - 15);
     this.data.scene.add(this.data.healthcube);
