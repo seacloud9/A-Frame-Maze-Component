@@ -55,6 +55,9 @@
 	 */
 	AFRAME.registerComponent('aframe-maze', {
 	  schema: {
+	    meshArray:{
+	      default:[]
+	    },
 	    map: {
 	      default: [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], [1, 1, 0, 0, 0, 0, 0, 1, 1, 1 ], [1, 1, 0, 0, 2, 0, 0, 0, 0, 1 ], [1, 0, 0, 0, 0, 2, 0, 0, 0, 1 ], [1, 0, 0, 2, 0, 0, 2, 0, 0, 1 ], [1, 0, 0, 0, 2, 0, 0, 0, 1, 1 ], [1, 1, 1, 0, 0, 0, 0, 1, 1, 1 ], [1, 1, 1, 0, 0, 1, 0, 0, 1, 1 ], [1, 1, 1, 1, 1, 1, 0, 0, 1, 1 ], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ]]
 	    },
@@ -98,6 +101,7 @@
 	          new THREE.CubeGeometry(units * this.data.UNITSIZE, 10, units * this.data.UNITSIZE),
 	          this.data.floorMaterial
 	      );
+	    this.data.meshArray.push(floor);
 	    this.data.scene.add(floor);
 
 	      // Geometry: walls
@@ -110,7 +114,7 @@
 	          wall.position.x = ((i - units / 2) * this.data.UNITSIZE + this.data.offsetX);
 	          wall.position.y = this.data.WALLHEIGHT / 2;
 	          wall.position.z = ((j - units / 2) * this.data.UNITSIZE + this.data.offsetZ);
-	          console.log(wall);
+	          this.data.meshArray.push(wall);
 	          this.data.scene.add(wall);
 	        }
 	      }
@@ -122,6 +126,7 @@
 	          this.data.healthCubeMaterial
 	      );
 	    this.data.healthcube.position.set(-this.data.UNITSIZE - 15, 35, -this.data.UNITSIZE - 15);
+	    this.data.meshArray.push(this.data.healthcube);
 	    this.data.scene.add(this.data.healthcube);
 
 	      // Lighting
@@ -130,6 +135,7 @@
 	      // this.data.scene.add( directionalLight1 );
 	    var directionalLight2 = new THREE.DirectionalLight(0xF7EFBE, 0.5);
 	    directionalLight2.position.set(-0.5, -1, -0.5);
+	    this.data.meshArray.push(directionalLight2);
 	    this.data.scene.add(directionalLight2);
 	  },
 
@@ -137,13 +143,17 @@
 	   * Called when component is attached and when component data changes.
 	   * Generally modifies the entity based on the data.
 	   */
-	  update: function (oldData) { },
+	  update: function (oldData) {
+
+	  },
 
 	  /**
 	   * Called when a component is removed (e.g., via removeAttribute).
 	   * Generally undoes all modifications to the entity.
 	   */
-	  remove: function () { },
+	  remove: function () {
+	      this.el.removeObject3D('aframe-maze');
+	  },
 
 	  /**
 	   * Called on each scene tick.
