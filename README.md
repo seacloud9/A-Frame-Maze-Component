@@ -33,12 +33,13 @@ Install and use by directly including the [browser files](dist):
 <head>
   <title>My A-Frame Scene</title>
   <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-aframe-maze-component/dist/aframe-maze-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-maze-component/dist/aframe-maze-component.min.js"></script>
 </head>
 
 <body>
   <a-scene>
-    <a-entity aframe-maze="foo: bar"></a-entity>
+    <a-entity aframe-maze="map:[[1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ], [1, 1, 0, 0, 0, 0, 0, 1, 1, 1 ], [1, 1, 0, 0, 2, 0, 0, 0, 0, 1 ], [1, 0, 0, 0, 0, 2, 0, 0, 0, 1 ], [1, 0, 0, 2, 0, 0, 2, 0, 0, 1 ], [1, 0, 0, 0, 2, 0, 0, 0, 1, 1 ], [1, 1, 1, 0, 0, 0, 0, 1, 1, 1 ], [1, 1, 1, 0, 0, 1, 0, 0, 1, 1 ], [1, 1, 1, 1, 1, 1, 0, 0, 1, 1 ], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ]]
+"></a-entity>
   </a-scene>
 </body>
 ```
@@ -59,7 +60,7 @@ angle install aframe-maze-component
 Install via npm:
 
 ```bash
-npm install aframe-aframe-maze-component
+npm install https://github.com/seacloud9/A-Frame-Maze-Component
 ```
 
 Then require and use.
