@@ -107,6 +107,10 @@ AFRAME.registerComponent('aframe-maze', {
    */
   remove: function () {
       this.el.removeObject3D('aframe-maze');
+    for(var i=0; i < this.data.meshArray; i++){
+      console.log(this.data.meshArray[i])
+      this.data.scene.remove(this.data.meshArray[i].id)
+    }
   },
 
   /**
