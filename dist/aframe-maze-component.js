@@ -152,11 +152,9 @@
 	   * Generally undoes all modifications to the entity.
 	   */
 	  remove: function () {
-	      this.el.removeObject3D('aframe-maze');
-	    for(var i=0; i < this.data.meshArray; i++){
-	      console.log(this.data.meshArray[i])
-	      this.data.scene.remove(this.data.meshArray[i].id)
-	    }
+	      for(var i=0; i < this.data.meshArray.length; i++){
+	          this.data.scene.remove(this.data.meshArray[i])
+	      }
 	  },
 
 	  /**
