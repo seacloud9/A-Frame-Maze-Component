@@ -1,4 +1,4 @@
-## [aframe-maze-component](http://http://seacloud9.github.io/aframe-maze-component/)
+## [aframe-maze-component](http://seacloud9.github.io/aframe-maze-component/)
 
 [![Version](http://img.shields.io/npm/v/aframe-maze-component.svg?style=flat-square)](https://npmjs.org/package/aframe-maze-component)
 [![License](http://img.shields.io/npm/l/aframe-maze-component.svg?style=flat-square)](https://npmjs.org/package/aframe-maze-component)
