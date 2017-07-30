@@ -7,6 +7,7 @@
     <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <script src="../../dist/aframe-maze-component.min.js"></script>
+    <script src="./aframe-gamepad-controls.min.js"></script>
   </head>
   <body>
     <a-scene>
@@ -14,7 +15,7 @@
         <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       </a-assets>
-      <a-entity far="1000" id="camera" wasd-controls="acceleration:1360" camera="userHeight: 1.6" position="0 40 0" look-controls></a-entity>
+      <a-entity far="1000" gamepad-controls="lookEnabled: false" id="camera" wasd-controls="acceleration:1360" camera="userHeight: 1.6" position="0 40 0" look-controls></a-entity>
       <a-entity id="sky" scale="15 15 15" position="0 25 -500" environment="dressingAmount: 0; dressing: trees; fog: 0.1; horizonColor: #bcefef; active: true; seed: 8; skyType: gradient; skyColor: #24b59f;  ground: noise; groundYScale: 2.18; groundTexture: squares; groundColor: #937a24; groundColor2: #987d2e; dressingColor: #888b1d; dressingScale: 1;  gridColor: #c5a543; preset: forest"></a-entity>
         <a-entity aframe-maze="" scale="1" ></a-entity>
     </a-scene>
