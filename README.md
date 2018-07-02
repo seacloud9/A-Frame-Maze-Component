@@ -4,7 +4,12 @@
 [![License](http://img.shields.io/npm/l/aframe-maze-component.svg?style=flat-square)](https://npmjs.org/package/aframe-maze-component)
 
 Quickly build a maze generated enviorment from map multidimentional array
-
+<br />
+<br />
+<a href='http://seacloud9.github.io/aframe-maze-component/examples/basic/' target='blank'>
+<img src='aframe-maze.gif' alt='aframe-maze' />
+</a>
+<br />
 For [A-Frame](https://aframe.io).
 
 ### API
